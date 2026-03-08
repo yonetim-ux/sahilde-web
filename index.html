@@ -23,533 +23,193 @@
     background: var(--beyaz);
     color: var(--yazi);
     min-height: 100vh;
-    overflow-x: hidden;
   }
 
-  /* ── ARKA PLAN ── */
   .bg-gradient {
     position: fixed;
     inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,180,216,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(13,43,94,0.08) 0%, transparent 50%),
-      var(--beyaz);
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,180,216,0.12) 0%, transparent 60%), var(--beyaz);
     z-index: 0;
   }
 
-  .dalgalar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 180px;
-    z-index: 0;
-    opacity: 0.06;
-    pointer-events: none;
-  }
-
-  /* ── CONTAINER ── */
   .container {
     position: relative;
     z-index: 1;
     max-width: 480px;
     margin: 0 auto;
-    padding: 0 24px 60px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0 20px 60px;
   }
 
-  /* ── HEADER ── */
-  header {
-    width: 100%;
-    padding: 36px 0 28px;
-    text-align: center;
-    animation: fadeDown 0.7s ease both;
-  }
+  header { padding: 30px 0 20px; text-align: center; }
+  .logo-icon { width: 60px; height: 60px; margin-bottom: 10px; }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 38px; color: var(--lacivert); }
+  .logo-text span { color: var(--turkuaz); }
 
-  .logo-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 16px;
-  }
-
-  .logo-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    font-weight: 300;
-    color: var(--lacivert);
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-
-  .logo-text span {
-    color: var(--turkuaz);
-  }
-
-  .logo-sub {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #888;
-    margin-top: 6px;
-  }
-
-  /* ── KARŞILAMA KARTI ── */
-  .welcome-card {
-    width: 100%;
+  .panel-card {
     background: white;
     border-radius: 20px;
-    padding: 28px 28px 24px;
-    box-shadow: 0 4px 40px rgba(13,43,94,0.08);
+    padding: 24px;
+    box-shadow: 0 4px 30px rgba(13,43,94,0.06);
+    margin-bottom: 20px;
     border: 1px solid rgba(0,180,216,0.1);
-    margin-top: 8px;
-    animation: fadeUp 0.7s 0.1s ease both;
   }
 
-  .kurum-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(0,180,216,0.08);
-    border: 1px solid rgba(0,180,216,0.2);
-    border-radius: 100px;
-    padding: 5px 14px;
-    font-size: 12px;
-    color: var(--turkuaz);
-    font-weight: 500;
-    margin-bottom: 14px;
-  }
+  h2 { font-size: 15px; margin-bottom: 12px; color: var(--lacivert); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  .kurum-badge svg {
-    width: 14px; height: 14px;
-  }
+  /* Grid Sistemleri */
+  .grid-select { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+  .time-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
 
-  .welcome-card h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--lacivert);
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-
-  .welcome-card h1 .kurum-adi {
-    color: var(--turkuaz);
-  }
-
-  .welcome-card p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  /* ── AYIRICI ── */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent);
-    margin: 20px 0;
-  }
-
-  /* ── AVANTAJLAR ── */
-  .avantajlar {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    animation: fadeUp 0.7s 0.2s ease both;
-  }
-
-  .avantaj-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+  .select-btn {
+    padding: 12px 5px;
+    border: 1.5px solid #eee;
+    border-radius: 12px;
     background: white;
-    border-radius: 14px;
-    padding: 14px 18px;
-    box-shadow: 0 2px 16px rgba(13,43,94,0.05);
-    border: 1px solid rgba(13,43,94,0.05);
-  }
-
-  .avantaj-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  .avantaj-icon.mavi { background: rgba(0,180,216,0.1); }
-  .avantaj-icon.altin { background: rgba(201,168,76,0.1); }
-  .avantaj-icon.yesil { background: rgba(34,197,94,0.1); }
-
-  .avantaj-text strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--lacivert);
-    margin-bottom: 2px;
-  }
-
-  .avantaj-text span {
-    font-size: 12px;
-    color: #999;
-  }
-
-  /* ── BUTONLAR ── */
-  .butonlar {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
-    animation: fadeUp 0.7s 0.3s ease both;
-  }
-
-  .btn-whatsapp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, #0d2b5e 0%, #1a4a8a 100%);
-    color: white;
-    border: none;
-    border-radius: 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 24px rgba(13,43,94,0.25);
-  }
-
-  .btn-whatsapp:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(13,43,94,0.35);
-  }
-
-  .btn-whatsapp:active { transform: translateY(0); }
-
-  .btn-whatsapp svg {
-    width: 22px; height: 22px;
-    flex-shrink: 0;
-  }
-
-  .btn-vcf {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 15px;
-    background: white;
-    color: var(--lacivert);
-    border: 1.5px solid rgba(13,43,94,0.15);
-    border-radius: 16px;
-    font-family: 'DM Sans', sans-serif;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
+    color: #555;
   }
 
-  .btn-vcf:hover {
-    border-color: var(--turkuaz);
-    color: var(--turkuaz);
-    background: rgba(0,180,216,0.03);
+  .select-btn.active { 
+    background: var(--lacivert); 
+    color: white; 
+    border-color: var(--lacivert);
+    box-shadow: 0 4px 12px rgba(13,43,94,0.2);
   }
 
-  .btn-vcf svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-  /* ── BİLGİ SATIRI ── */
-  .info-row {
+  input[type="datetime-local"], textarea {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 28px;
-    animation: fadeUp 0.7s 0.4s ease both;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1.5px solid #eee;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fdfdfd;
   }
 
-  .info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+  textarea { height: 100px; resize: none; margin-top: 8px; }
+  .input-label { display: block; font-size: 13px; color: #888; margin-top: 12px; margin-bottom: 4px; }
+
+  .btn-complete {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 18px;
+    background: linear-gradient(135deg, #0d2b5e 0%, #1a4a8a 100%);
+    color: white; border: none; border-radius: 18px;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 10px 25px rgba(13,43,94,0.25);
+    transition: transform 0.2s;
   }
 
-  .info-item svg { 
-    width: 18px; height: 18px; 
-    color: var(--turkuaz);
-  }
-
-  .info-item span {
-    font-size: 11px;
-    color: #aaa;
-    text-align: center;
-  }
-
-  .info-item strong {
-    font-size: 12px;
-    color: var(--lacivert);
-    font-weight: 500;
-    text-align: center;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    margin-top: 36px;
-    text-align: center;
-    font-size: 11px;
-    color: #ccc;
-    animation: fadeUp 0.7s 0.5s ease both;
-  }
-
-  footer a { color: var(--turkuaz); text-decoration: none; }
-
-  /* ── ANİMASYONLAR ── */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── PULSE (WA butonu için) ── */
-  .pulse-ring {
-    position: relative;
-  }
-  .pulse-ring::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 20px;
-    border: 2px solid rgba(13,43,94,0.2);
-    animation: pulse 2s ease infinite;
-  }
-  @keyframes pulse {
-    0%   { opacity: 1; transform: scale(1); }
-    50%  { opacity: 0; transform: scale(1.04); }
-    100% { opacity: 0; transform: scale(1.04); }
-  }
-
-  /* ── MESAJ TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--lacivert);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 13px;
-    transition: transform 0.3s;
-    z-index: 999;
-    white-space: nowrap;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
+  .btn-complete:active { transform: scale(0.98); }
 </style>
 </head>
 <body>
 
 <div class="bg-gradient"></div>
 
-<!-- Dalga SVG -->
-<svg class="dalgalar" viewBox="0 0 1440 180" preserveAspectRatio="none">
-  <path d="M0,60 C360,120 720,0 1080,80 C1260,120 1380,60 1440,80 L1440,180 L0,180 Z" fill="#0d2b5e"/>
-  <path d="M0,100 C240,60 480,140 720,100 C960,60 1200,120 1440,100 L1440,180 L0,180 Z" fill="#00b4d8" opacity="0.5"/>
-</svg>
-
 <div class="container">
-
-  <!-- LOGO -->
   <header>
     <svg class="logo-icon" viewBox="0 0 64 64" fill="none">
-      <!-- Yelkenli -->
       <path d="M32 52 L32 14" stroke="#0d2b5e" stroke-width="2" stroke-linecap="round"/>
       <path d="M32 14 L14 44 L32 44 Z" fill="#0d2b5e" opacity="0.15"/>
       <path d="M32 14 L50 38 L32 38 Z" fill="#00b4d8" opacity="0.6"/>
-      <!-- Dalgalar -->
-      <path d="M16 54 Q24 50 32 54 Q40 58 48 54" stroke="#00b4d8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
     </svg>
     <div class="logo-text">Sahil<span>'de</span></div>
-    <div class="logo-sub">Restaurant · Bar · Altınoluk</div>
+    <div id="kurumIsmi" style="font-size: 14px; color: #666; margin-top: 5px; font-weight: 500;">Kurumsal Rezervasyon</div>
   </header>
 
-  <!-- KARŞILAMA KARTI -->
-  <div class="welcome-card">
-    <div class="kurum-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-        <polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
-      Kurumsal İş Yemeği
+  <div class="panel-card">
+    <h2>Kaç Kişisiniz?</h2>
+    <div class="grid-select" id="peopleSelect">
+      <button class="select-btn" onclick="setVal('people', '1', this)">1</button>
+      <button class="select-btn" onclick="setVal('people', '2', this)">2</button>
+      <button class="select-btn" onclick="setVal('people', '3', this)">3</button>
+      <button class="select-btn" onclick="setVal('people', '4', this)">4</button>
+      <button class="select-btn" onclick="setVal('people', '5', this)">5</button>
+      <button class="select-btn" onclick="setVal('people', '6', this)">6</button>
+      <button class="select-btn" onclick="setVal('people', '7', this)">7</button>
+      <button class="select-btn" onclick="setVal('people', '8', this)">8</button>
+      <button class="select-btn" onclick="setVal('people', '9', this)">9</button>
+      <button class="select-btn" onclick="setVal('people', '10+', this)">10+</button>
     </div>
 
-    <h1>Hoş geldiniz,<br><span class="kurum-adi" id="kurumAdi">Değerli Ekibimiz</span> 👋</h1>
+    <h2>Ne Zaman Geleceksiniz?</h2>
+    <div class="time-grid" id="timeSelect">
+      <button class="select-btn" onclick="setVal('time', '30 Dakika İçinde', this)">30 dk</button>
+      <button class="select-btn" onclick="setVal('time', '45 Dakika İçinde', this)">45 dk</button>
+      <button class="select-btn" onclick="setVal('time', '1 Saat İçinde', this)">1 saat</button>
+    </div>
+    
+    <span class="input-label">Veya İleri Bir Tarih/Saat Seçin:</span>
+    <input type="datetime-local" id="customTime" onchange="clearTimeBtns()">
 
-    <div class="divider"></div>
-
-    <p>Altınoluk sahilinde unutulmaz bir iş yemeği için ekibinize özel fiyatlar ve öncelikli masa hazırlıyoruz. Hemen rezervasyon başlatın.</p>
+    <h2 style="margin-top: 24px;">Sipariş ve Notlar</h2>
+    <span class="input-label">Menü Tercihleriniz:</span>
+    <textarea id="menuOrder" placeholder="Fiziksel menüden seçtiğiniz yemekleri buraya yazabilirsiniz..."></textarea>
+    
+    <span class="input-label">Özel Notunuz (Alerji vb.):</span>
+    <textarea id="extraNote" placeholder="Varsa eklemek istediğiniz notlar..."></textarea>
   </div>
 
-  <!-- AVANTAJLAR -->
-  <div class="avantajlar" style="margin-top: 16px;">
-    <div class="avantaj-item">
-      <div class="avantaj-icon mavi">🎯</div>
-      <div class="avantaj-text">
-        <strong>Öncelikli Masa Rezervasyonu</strong>
-        <span>Ekibiniz için masa hazır bekler</span>
-      </div>
-    </div>
-    <div class="avantaj-item">
-      <div class="avantaj-icon altin">✨</div>
-      <div class="avantaj-text">
-        <strong>Kurumsal Özel Fiyat</strong>
-        <span>Fiziksel menümüzde kurumsal tarife</span>
-      </div>
-    </div>
-    <div class="avantaj-item">
-      <div class="avantaj-icon yesil">🌊</div>
-      <div class="avantaj-text">
-        <strong>Sahil Manzaralı Salon</strong>
-        <span>Ege'nin en güzel lokasyonunda</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- BUTONLAR -->
-  <div class="butonlar">
-    <a id="btnWhatsApp" href="#" class="btn-whatsapp pulse-ring" onclick="whatsappAc(event)">
-      <svg viewBox="0 0 24 24" fill="currentColor">
+  <button class="btn-complete" onclick="tamamla()">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Sipariş / Rezervasyon Başlat
-    </a>
-
-    <button class="btn-vcf" onclick="vcfIndir()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-      </svg>
-      Rehbere Kaydet (Sahilde Restaurant)
-    </button>
-  </div>
-
-  <!-- BİLGİ SATIRI -->
-  <div class="info-row">
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-        <circle cx="12" cy="10" r="3"/>
-      </svg>
-      <strong>Barbaros Cd. No:24</strong>
-      <span>Altınoluk / Balıkesir</span>
-    </div>
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-      </svg>
-      <strong>0531 732 13 13</strong>
-      <span>WhatsApp & Telefon</span>
-    </div>
-    <div class="info-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
-      <strong>Her Gün Açık</strong>
-      <span>12:00 – 23:00</span>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2025 Sahilde Restaurant Bar · Altınoluk</p>
-    <p style="margin-top:4px"><a href="https://wa.me/905317321313">WhatsApp</a> · <a href="https://maps.google.com/?q=Barbaros+Cd.+No:24+Altınoluk">Harita</a></p>
-  </footer>
-
+    </svg>
+    Rezervasyonu Tamamla
+  </button>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
 <script>
-  // URL parametresinden kurum adını oku
-  function kurumAdiAl() {
+  let selection = { people: '', time: '' };
+
+  // Sayfa yüklenince tarihi ayarla ve kurum ismini çek
+  window.onload = () => {
     const params = new URLSearchParams(window.location.search);
-    const kurum = params.get('kurum');
-    if (kurum) {
-      const temiz = decodeURIComponent(kurum).replace(/[<>]/g, '');
-      document.getElementById('kurumAdi').textContent = temiz + ' Ekibi';
+    const kurum = params.get('kurum') || 'Kurumsal';
+    document.getElementById('kurumIsmi').textContent = decodeURIComponent(kurum) + " Ekibi";
+    
+    // Tarih seçiciyi bugünden başlat
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    document.getElementById('customTime').min = now.toISOString().slice(0, 16);
+  };
+
+  function setVal(type, val, btn) {
+    selection[type] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.select-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if(type === 'time') document.getElementById('customTime').value = '';
+  }
+
+  function clearTimeBtns() {
+    selection.time = document.getElementById('customTime').value;
+    document.getElementById('timeSelect').querySelectorAll('.select-btn').forEach(b => b.classList.remove('active'));
+  }
+
+  function tamamla() {
+    const params = new URLSearchParams(window.location.search);
+    const kurum = params.get('kurum') || 'Değerli Müşterimiz';
+    const menu = document.getElementById('menuOrder').value || 'Belirtilmedi';
+    const note = document.getElementById('extraNote').value || 'Yok';
+    const timeVal = document.getElementById('customTime').value || selection.time;
+
+    if(!selection.people || !timeVal) {
+        alert("Lütfen kişi sayısı ve zaman seçiniz.");
+        return;
     }
+
+    const metin = `*Sahilde Restaurant - Kurumsal Rezervasyon*%0A%0A` +
+                 `*Kurum:* ${decodeURIComponent(kurum)}%0A` +
+                 `*Kişi:* ${selection.people}%0A` +
+                 `*Zaman:* ${timeVal}%0A` +
+                 `*Sipariş:* ${menu}%0A` +
+                 `*Not:* ${note}`;
+
+    window.open(`https://wa.me/905317321313?text=${metin}`, '_blank');
   }
-
-  // WhatsApp'a pre-filled mesajla yönlendir
-  function whatsappAc(e) {
-    e.preventDefault();
-    const params = new URLSearchParams(window.location.search);
-    const kurum = params.get('kurum') 
-      ? decodeURIComponent(params.get('kurum')) 
-      : 'kurumumuz';
-    
-    const mesaj = encodeURIComponent(
-      'Merhaba Sahilde, ben ' + kurum + ' ekibinden yazıyorum. ' +
-      'İş yemeği için ön sipariş / rezervasyon yapmak istiyorum. ' +
-      'Kurumsal menü hakkında bilgi alabilir miyim?'
-    );
-    
-    window.open('https://wa.me/905317321313?text=' + mesaj, '_blank');
-  }
-
-  // vCard indir
-  function vcfIndir() {
-    const vcard = [
-      'BEGIN:VCARD',
-      'VERSION:3.0',
-      'FN:Sahilde Restaurant Bar',
-      'ORG:Sahilde Restaurant Bar',
-      'TEL;TYPE=CELL:+905317321313',
-      'ADR;TYPE=WORK:;;Barbaros Cd. No:24;Altınoluk;Balıkesir;10870;Türkiye',
-      'URL:https://sahilderestaurantbar.com',
-      'NOTE:Altınoluk sahilinde kurumsal iş yemeği ve rezervasyon için.',
-      'END:VCARD'
-    ].join('\n');
-
-    const blob = new Blob([vcard], { type: 'text/vcard' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Sahilde-Restaurant.vcf';
-    a.click();
-    URL.revokeObjectURL(url);
-    
-    toast('Rehbere kaydedildi ✓');
-  }
-
-  // Toast mesajı
-  function toast(mesaj) {
-    const el = document.getElementById('toast');
-    el.textContent = mesaj;
-    el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 3000);
-  }
-
-  // Sayfa yüklenince çalış
-  kurumAdiAl();
 </script>
 </body>
 </html>
