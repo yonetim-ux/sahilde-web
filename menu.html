@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijital Menü — Sahil'de Restaurant &amp; Bar | Altınoluk</title>
+    <meta name="description"
+        content="Sahil'de Restaurant & Bar dijital menü. Taze deniz ürünleri, Ege mezeleri, ızgara çeşitleri ve içecekler. Altınoluk, Edremit.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --navy: #061a2e;
+            --deep: #0a2540;
+            --ocean: #0e3d6b;
+            --sea: #1a6a9a;
+            --teal: #0fa3b1;
+            --sky: #5fc3d8;
+            --foam: #a8dde9;
+            --white: #f7f9fc;
+            --cream: #f0ede6;
+            --gold: #c8a84b;
+            --text: #1a2a3a
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            min-height: 100vh
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--teal);
+            border-radius: 3px
+        }
+
+        /* ═══ HEADER ═══ */
+        .menu-topbar {
+            background: rgba(6, 26, 46, .97);
+            backdrop-filter: blur(16px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(15, 163, 177, .15)
+        }
+
+        .menu-topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .menu-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain
+        }
+
+        .menu-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-decoration: none
+        }
+
+        .menu-brand em {
+            color: var(--teal);
+            font-style: italic
+        }
+
+        .menu-home-btn {
+            background: none;
+            border: 1px solid rgba(247, 249, 252, .2);
+            color: rgba(247, 249, 252, .7);
+            padding: 8px 20px;
+            cursor: pointer;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: .6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s
+        }
+
+        .menu-home-btn:hover {
+            background: rgba(247, 249, 252, .1);
+            color: var(--white)
+        }
+
+        /* ═══ HERO ═══ */
+        .menu-hero {
+            text-align: center;
+            padding: 60px 40px 40px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%)
+        }
+
+        .menu-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 12px
+        }
+
+        .menu-hero h1 em {
+            font-style: italic;
+            color: var(--foam)
+        }
+
+        .menu-hero p {
+            font-size: .7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(168, 221, 233, .6);
+            margin-bottom: 8px
+        }
+
+        .menu-hero-line {
+            width: 48px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto
+        }
+
+        /* ═══ CATEGORY NAV (sticky) ═══ */
+        .cat-nav {
+            position: sticky;
+            top: 58px;
+            z-index: 99;
+            background: rgba(6, 26, 46, .95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 14px 20px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(15, 163, 177, .1)
+        }
+
+        .cat-link {
+            padding: 8px 20px;
+            border: none;
+            background: rgba(247, 249, 252, .06);
+            color: rgba(247, 249, 252, .5);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: .58rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all .35s;
+            border-radius: 2px;
+            text-decoration: none
+        }
+
+        .cat-link.active {
+            background: var(--teal);
+            color: var(--navy);
+            font-weight: 600
+        }
+
+        .cat-link:hover:not(.active) {
+            background: rgba(247, 249, 252, .12);
+            color: var(--white)
+        }
+
+        /* ═══ CATEGORY SECTION ═══ */
+        .cat-section {
+            padding: 40px 40px 20px;
+            max-width: 960px;
+            margin: 0 auto
+        }
+
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px
+        }
+
+        .cat-icon {
+            font-size: 1.8rem
+        }
+
+        .cat-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--foam);
+            letter-spacing: 1px
+        }
+
+        .cat-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(15, 163, 177, .2)
+        }
+
+        /* ═══ MENU ITEM CARD ═══ */
+        .mi {
+            border-bottom: 1px solid rgba(15, 163, 177, .08);
+            padding: 18px 0;
+            cursor: pointer;
+            transition: background .3s;
+            border-radius: 4px
+        }
+
+        .mi:hover {
+            background: rgba(15, 163, 177, .04)
+        }
+
+        .mi-top {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            padding: 0 8px
+        }
+
+        .mi-thumb {
+            width: 56px;
+            height: 56px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid rgba(15, 163, 177, .15);
+            transition: transform .3s
+        }
+
+        .mi:hover .mi-thumb {
+            transform: scale(1.05)
+        }
+
+        .mi-no-thumb {
+            width: 56px;
+            height: 56px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(15, 163, 177, .15), rgba(15, 163, 177, .05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem
+        }
+
+        .mi-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .mi-name-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px
+        }
+
+        .mi-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .mi-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--teal);
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .mi-desc {
+            font-size: .72rem;
+            color: rgba(247, 249, 252, .4);
+            line-height: 1.6;
+            margin-top: 4px;
+            letter-spacing: .3px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .mi-tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap
+        }
+
+        .mi-tag {
+            font-size: .5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(15, 163, 177, .12);
+            color: var(--teal);
+            padding: 3px 8px;
+            border-radius: 2px
+        }
+
+        /* ═══ EXPANDED STATE ═══ */
+        .mi-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s ease, padding .3s;
+            padding: 0 8px
+        }
+
+        .mi.open .mi-detail {
+            max-height: 700px;
+            padding: 16px 8px 8px
+        }
+
+        .mi.open .mi-desc {
+            -webkit-line-clamp: unset;
+            line-clamp: unset
+        }
+
+        .mi-detail-img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .3)
+        }
+
+        .mi-detail-desc {
+            font-size: .78rem;
+            color: rgba(247, 249, 252, .55);
+            line-height: 1.85;
+            letter-spacing: .3px
+        }
+
+        .mi-expand-hint {
+            font-size: .5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(247, 249, 252, .2);
+            margin-top: 6px;
+            transition: color .3s
+        }
+
+        .mi:hover .mi-expand-hint {
+            color: rgba(247, 249, 252, .4)
+        }
+
+        .mi.open .mi-expand-hint {
+            display: none
+        }
+
+        /* ═══ DIET BADGES ═══ */
+        .mi-diets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        .diet {
+            font-size: .55rem;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .diet-vej {
+            background: rgba(76, 175, 80, .15);
+            color: #66bb6a
+        }
+
+        .diet-vegan {
+            background: rgba(56, 142, 60, .15);
+            color: #4caf50
+        }
+
+        .diet-gluten {
+            background: rgba(255, 152, 0, .15);
+            color: #ffa726
+        }
+
+        .diet-acili {
+            background: rgba(244, 67, 54, .15);
+            color: #ef5350
+        }
+
+        .diet-xacili {
+            background: rgba(211, 47, 47, .2);
+            color: #e53935
+        }
+
+        /* ═══ FOOTER ═══ */
+        .menu-footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(15, 163, 177, .1);
+            font-size: .7rem;
+            color: rgba(247, 249, 252, .35);
+            letter-spacing: 1px;
+            line-height: 2
+        }
+
+        .menu-footer a {
+            color: var(--teal);
+            text-decoration: none
+        }
+
+        /* ═══ BADGE ═══ */
+        .mbadge {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            padding: 8px 16px;
+            font-size: .6rem;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            z-index: 200;
+            transition: opacity 1s
+        }
+
+        .mbadge.ok {
+            background: rgba(15, 163, 177, .9);
+            color: var(--navy)
+        }
+
+        .mbadge.warn {
+            background: rgba(200, 168, 75, .9);
+            color: var(--navy)
+        }
+
+        /* ═══ LOADING ═══ */
+        .loading-state {
+            text-align: center;
+            padding: 80px 40px;
+            font-size: .75rem;
+            letter-spacing: 3px;
+            color: var(--teal)
+        }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media(max-width:700px) {
+            .menu-topbar {
+                padding: 12px 16px
+            }
+
+            .menu-hero {
+                padding: 40px 20px 30px
+            }
+
+            .cat-nav {
+                padding: 10px 12px;
+                gap: 6px;
+                top: 50px
+            }
+
+            .cat-link {
+                padding: 6px 14px;
+                font-size: .52rem
+            }
+
+            .cat-section {
+                padding: 28px 16px 12px
+            }
+
+            .mi-thumb,
+            .mi-no-thumb {
+                width: 44px;
+                height: 44px
+            }
+
+            .mi-name {
+                font-size: 1rem
+            }
+
+            .mi-detail-img {
+                max-height: 220px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+    <div class="menu-topbar">
+        <div class="menu-topbar-left">
+            <img src="logo.svg" alt="Sahil'de" class="menu-logo" onerror="this.style.display='none'">
+            <a href="index.html" class="menu-brand">Sahil<em>'de</em></a>
+        </div>
+        <a href="index.html" class="menu-home-btn">← Ana Sayfa</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="menu-hero">
+        <p>✦ &nbsp; Sahil'de Restaurant &amp; Bar &nbsp; ✦</p>
+        <h1>Dijital <em>Menü</em></h1>
+        <div class="menu-hero-line"></div>
+        <p style="letter-spacing:2px;font-size:.62rem;color:rgba(247,249,252,.35)">Egeli tatlar · Taze deniz ürünleri ·
+            Geleneksel Türk mezeleri</p>
+    </div>
+
+    <!-- CATEGORY NAV -->
+    <div class="cat-nav" id="catNav"><!-- JS --></div>
+
+    <!-- MENU CONTENT -->
+    <div id="menuContent">
+        <div class="loading-state">⟳ Menü yükleniyor...</div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="menu-footer">
+        <p>Sahil'de Restaurant &amp; Bar &nbsp;·&nbsp; İskele, Barbaros Cd. No:24 Altınoluk</p>
+        <p><a href="tel:+905317321313">0531 732 13 13</a> &nbsp;·&nbsp; <a
+                href="https://www.instagram.com/sahilderestaurantbar/" target="_blank">Instagram</a></p>
+        <p style="margin-top:12px">Fiyatlarımız KDV dahildir. Güncel fiyatlar için personelimize danışınız.</p>
+        <p style="margin-top:6px"><a href="index.html">← Ana Sayfaya Dön</a></p>
+    </div>
+
+    <div class="mbadge" id="mbadge">⟳ Yükleniyor...</div>
+
+    <script>
+        const SHEETS_ID = "1giuJ2S3BFMOeIbs6ll3VledPx1c2W3Mll7v4Z1uLKII";
+        const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/gviz/tq?tqx=out:json&sheet=`;
+
+        const CATS = ['Başlangıç \u0026 Meze', 'Ara Sıcak', 'Ana Yemek', 'Tatlı', 'İçecek'];
+        const CIDS = ['baslangic', 'ara', 'ana', 'tatli', 'icecek'];
+        const ICONS = ['🥗', '🦑', '🐟', '🍮', '🍶'];
+
+        const DIYET = {
+            'Vejetaryen': { icon: '🌱', cls: 'diet-vej' },
+            'Vegan': { icon: '🥬', cls: 'diet-vegan' },
+            'Glutensiz': { icon: '🌾✕', cls: 'diet-gluten' },
+            'Acılı': { icon: '🌶️', cls: 'diet-acili' },
+            'Ekstra Acılı': { icon: '🌶️🌶️', cls: 'diet-xacili' },
+        };
+
+        /* Fallback data */
+        const FB = [
+            { ad: 'Haydari', kat: 'Başlangıç \u0026 Meze', fiyat: 180, acik: 'Süzme yoğurt, sarımsak ve dereotu ile', etiket: 'Vejetaryen', resim: '', diyet: 'Vejetaryen' },
+            { ad: 'Fava', kat: 'Başlangıç \u0026 Meze', fiyat: 200, acik: 'Bakla ezmesi, zeytinyağı ve dereotu', etiket: 'Vejetaryen', resim: '', diyet: 'Vejetaryen' },
+            { ad: 'Kalamari', kat: 'Ara Sıcak', fiyat: 380, acik: 'Kızarmış kalamar, limon aioli ile', etiket: 'Klasik', resim: '', diyet: '' },
+            { ad: 'Çupra', kat: 'Ana Yemek', fiyat: 580, acik: 'Izgara, limon ve zeytinyağı sosu ile', etiket: 'Taze', resim: '', diyet: '' },
+            { ad: 'Levrek', kat: 'Ana Yemek', fiyat: 620, acik: 'Taze levrek, fırın patates ve mevsim sebze', etiket: 'Taze', resim: '', diyet: '' },
+            { ad: 'Dondurmalı Baklava', kat: 'Tatlı', fiyat: 220, acik: 'Antep fıstığı, dondurma ile servis', etiket: '', resim: '', diyet: '' },
+            { ad: 'Yeni Rakı', kat: 'İçecek', fiyat: 180, acik: '35 cl — 1937\'den gelen gelenek', etiket: '', resim: '', diyet: '' },
+        ];
+
+        let menuData = FB;
+
+        async function gviz(sheet) {
+            try {
+                const r = await fetch(BASE_URL + encodeURIComponent(sheet));
+                const t = await r.text();
+                return JSON.parse(t.replace(/^[^\(]+\(/, '').replace(/\);?$/, '')).table;
+            } catch (e) { return null; }
+        }
+
+        function renderNav() {
+            document.getElementById('catNav').innerHTML = CATS.map((cat, i) =>
+                `<a class="cat-link" href="#cat-${CIDS[i]}" onclick="activateNav(this)">${ICONS[i]} ${cat}</a>`
+            ).join('');
+        }
+
+        function activateNav(el) {
+            document.querySelectorAll('.cat-link').forEach(l => l.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function mkCard(item, catIcon) {
+            const hasImg = item.resim && item.resim.length > 10;
+            const thumb = hasImg
+                ? `<img class="mi-thumb" src="${item.resim}" alt="${item.ad}" loading="lazy">`
+                : `<div class="mi-no-thumb">${catIcon}</div>`;
+
+            const bigImg = hasImg
+                ? `<img class="mi-detail-img" src="${item.resim}" alt="${item.ad}" loading="lazy">`
+                : '';
+
+            let dietHtml = '';
+            if (item.diyet) {
+                const badges = item.diyet.split(',').map(d => d.trim()).filter(d => DIYET[d]);
+                if (badges.length) {
+                    dietHtml = `<div class="mi-diets">${badges.map(d =>
+                        `<span class="diet ${DIYET[d].cls}">${DIYET[d].icon} ${d}</span>`
+                    ).join('')}</div>`;
+                }
+            }
+
+            const tags = item.etiket
+                ? `<div class="mi-tags">${item.etiket.split(',').map(t =>
+                    `<span class="mi-tag">${t.trim()}</span>`
+                ).join('')}</div>`
+                : '';
+
+            return `<div class="mi" onclick="this.classList.toggle('open')">
+  <div class="mi-top">
+    ${thumb}
+    <div class="mi-info">
+      <div class="mi-name-row">
+        <span class="mi-name">${item.ad}</span>
+        <span class="mi-price">${Number(item.fiyat).toLocaleString('tr-TR')} ₺</span>
+      </div>
+      <p class="mi-desc">${item.acik}</p>
+      ${tags}
+      <p class="mi-expand-hint">Detaylar için tıklayın</p>
+    </div>
+  </div>
+  <div class="mi-detail">
+    ${bigImg}
+    <p class="mi-detail-desc">${item.acik}</p>
+    ${dietHtml}
+  </div>
+</div>`;
+        }
+
+        function renderMenu() {
+            const container = document.getElementById('menuContent');
+            container.innerHTML = CATS.map((cat, i) => {
+                const items = menuData.filter(m => m.kat === cat);
+                const cards = items.length
+                    ? items.map(item => mkCard(item, ICONS[i])).join('')
+                    : '<p style="padding:20px 8px;color:rgba(247,249,252,.3);font-size:.7rem;letter-spacing:2px">Yakında eklenecek</p>';
+                return `<div class="cat-section" id="cat-${CIDS[i]}">
+  <div class="cat-header">
+    <span class="cat-icon">${ICONS[i]}</span>
+    <h2 class="cat-title">${cat}</h2>
+    <div class="cat-line"></div>
+  </div>
+  ${cards}
+</div>`;
+            }).join('');
+        }
+
+        /* Scroll spy — active tab */
+        function initScrollSpy() {
+            const sections = CIDS.map(id => document.getElementById('cat-' + id)).filter(Boolean);
+            const links = document.querySelectorAll('.cat-link');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        links.forEach(l => l.classList.remove('active'));
+                        const idx = sections.indexOf(entry.target);
+                        if (idx >= 0 && links[idx]) links[idx].classList.add('active');
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: '-120px 0px -50% 0px' });
+            sections.forEach(s => observer.observe(s));
+        }
+
+        async function init() {
+            const badge = document.getElementById('mbadge');
+            renderNav();
+
+            try {
+                const mt = await gviz('MENÜ');
+                if (mt && mt.rows) {
+                    const rows = mt.rows.map(row => {
+                        const c = row.c; if (!c || !c[2]?.v) return null;
+                        return {
+                            ad: c[2]?.v, kat: c[3]?.v, fiyat: c[4]?.v || 0,
+                            acik: c[5]?.v || '', etiket: c[6]?.v || '',
+                            aktif: (c[7]?.v || '') == 'Evet',
+                            resim: c[11]?.v || '', diyet: c[12]?.v || ''
+                        };
+                    }).filter(r => r && r.aktif);
+                    if (rows.length) menuData = rows;
+                    badge.textContent = '✓ Canlı menü';
+                    badge.className = 'mbadge ok';
+                }
+            } catch (e) {
+                badge.textContent = '⚠ Varsayılan menü';
+                badge.className = 'mbadge warn';
+            }
+
+            renderMenu();
+            setTimeout(() => initScrollSpy(), 100);
+            setTimeout(() => { badge.style.opacity = '0'; }, 4000);
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+
+</body>
+
+</html>
